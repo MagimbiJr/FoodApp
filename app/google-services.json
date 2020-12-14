@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "624620698102",
+    "project_id": "foodapp-dcdfe",
+    "storage_bucket": "foodapp-dcdfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624620698102:android:8d79c11b3e269e4690afd7",
+        "android_client_info": {
+          "package_name": "com.tana.foodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624620698102-ehuph972okpaj4nt2fe29r6c4isgehrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpOG_RtpfvILzCpTr-ekvB4CZmjMgX--0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624620698102-ehuph972okpaj4nt2fe29r6c4isgehrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
