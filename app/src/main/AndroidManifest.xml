@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApp">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/LocalTheme">
+
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/LocalTheme">
+
+        </activity>
+        <activity
+            android:name=".GettingStartedActivity"
+            android:theme="@style/LocalTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
