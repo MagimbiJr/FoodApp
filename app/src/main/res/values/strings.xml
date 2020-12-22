@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">FoodApp</string>
+    <string name="get_start_btn_text">Get start here</string>
+    <string name="get_start_text">Best food in your city</string>
+    <string name="welcome_txt">Welcome!</string>
+    <string name="login_to_continue">Login to continue</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="remember_me">Remember me</string>
+    <string name="email_address">Email Address</string>
+    <string name="new_user">New user?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_has_an_account">Already has an account?</string>
+    <string name="register">Register</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="retype_password">Retype password</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
 </resources>
