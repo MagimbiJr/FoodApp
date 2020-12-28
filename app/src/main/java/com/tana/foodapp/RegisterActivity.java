@@ -8,11 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.tana.foodapp.Model.User;
 
 enum Gender{
-    MALE,
-    FEMALE
+    male,
+    female
 }
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -36,12 +34,15 @@ public class RegisterActivity extends AppCompatActivity {
     Button mRegisterBtn;
     ProgressBar mProgressBar;
     String gender;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
+
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         TextView btnToLogin = (TextView) findViewById(R.id.toLogin);
         btnToLogin.setOnClickListener(new View.OnClickListener() {
@@ -93,9 +94,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         int id = v.getId();
         if(id == R.id.male && checked){
-            gender =  Gender.MALE.toString();
+            gender =  Gender.male.toString();
         }else{
-            gender =  Gender.FEMALE.toString();
+            gender =  Gender.female.toString();
         }
 
         Log.d("Gender" , gender);
@@ -150,10 +151,11 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            userId = mAuth.getCurrentUser().getUid();
                             User user = new User(firstName, lastName, email, gender);
 
-                            FirebaseDatabase.getInstance().getReference("user")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            FirebaseDatabase.getInstance().getReference("users")
+                                    .child(userId)
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

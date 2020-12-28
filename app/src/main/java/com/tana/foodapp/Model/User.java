@@ -1,47 +1,53 @@
 package com.tana.foodapp.Model;
 
 public class User {
-    private String mFirstName, mLastName, mEmailAddress, mSex;
+    private String firstName, lastName, emailAddress, gender;
 
     public User() {
     }
 
-    public User(String mFirstName, String mLastName, String mEmailAddress, String mSex) {
-        this.mFirstName = mFirstName;
-        this.mLastName = mLastName;
-        this.mEmailAddress = mEmailAddress;
-        this.mSex = mSex;
+    public User(String firstName, String lastName, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+    }
+
+    public User(String firstName, String lastName, String emailAddress, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.gender = gender;
     }
 
     public String getmFirstName() {
-        return mFirstName;
+        return firstName;
     }
 
-    public void setmFirstName(String mFirstName) {
-        this.mFirstName = mFirstName;
+    public void setmFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getmLastName() {
-        return mLastName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setmLastName(String mLastName) {
-        this.mLastName = mLastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getmEmailAddress() {
-        return mEmailAddress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setmEmailAddress(String mEmailAddress) {
-        this.mEmailAddress = mEmailAddress;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
-    public String getmSex() {
-        return mSex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setmSex(String mSex) {
-        this.mSex = mSex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
