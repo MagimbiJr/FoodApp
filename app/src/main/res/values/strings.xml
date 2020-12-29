@@ -29,4 +29,6 @@
     <string name="profile_fragment">Profile Fragment</string>
     <string name="wallet_fragment">Wallet Fragment</string>
     <string name="home_frgment">Home Frgment</string>
+    <string name="first">First</string>
+    <string name="name">Name</string>
 </resources>
