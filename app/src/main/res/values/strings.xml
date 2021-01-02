@@ -34,4 +34,6 @@
     
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="home_top_header">What is your favorite food?</string>
+    <string name="top_item_name">Item Name</string>
 </resources>
