@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FoodApp</string>
+    <string name="app_name">Mr.Bolat Food</string>
     <string name="get_start_btn_text">Get start here</string>
     <string name="get_start_text">Best food in your city</string>
     <string name="welcome_txt">Welcome!</string>
@@ -31,4 +31,9 @@
     <string name="home_frgment">Home Frgment</string>
     <string name="first">First</string>
     <string name="name">Name</string>
+    
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="home_top_header">What is your favorite food?</string>
+    <string name="top_item_name">Item Name</string>
 </resources>

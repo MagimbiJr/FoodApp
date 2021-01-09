@@ -1,21 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".Fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_frgment"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/lightGray"
+            android:elevation="5dp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/drawer_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:elevation="6dp" />
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:fillViewport="true"
+       android:paddingTop="?attr/actionBarSize">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/top_recycler_container"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
+
+               <TextView
+                   android:id="@+id/textView4"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="32dp"
+                   android:layout_marginTop="16dp"
+                   android:text="@string/home_top_header"
+                   android:textColor="@color/black"
+                   android:textSize="30sp"
+                   android:textStyle="bold"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/top_list"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="32dp"
+                   android:layout_marginTop="0dp"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView4" />
+               <!--                tools:listitem="@layout/list_top_items" -->
+
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/search_input_layout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="32dp"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="32dp"
+               android:background="@drawable/search_border_style"
+               app:hintEnabled="true"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/top_recycler_container">
+
+               <androidx.appcompat.widget.SearchView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   app:defaultQueryHint="Search for food" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <TextView
+               android:id="@+id/popular_text"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="32dp"
+               android:layout_marginTop="16dp"
+               android:text="Most Popular"
+               android:textColor="@color/black"
+               android:textSize="30sp"
+               android:textStyle="bold"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/search_input_layout" />
+
+           <TextView
+               android:id="@+id/popular_view_btn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:layout_marginEnd="32dp"
+               android:clickable="true"
+               android:text="View all"
+               android:textColor="@color/black"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toTopOf="@+id/popular_text" />
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/popular_food_parent"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="32dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/popular_text"
+               tools:listitem="@layout/list_popular_item">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/popular_food_list"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <TextView
+               android:id="@+id/dishes_title"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="32dp"
+               android:layout_marginTop="15dp"
+               android:text="All The Dishes"
+               android:textColor="@color/black"
+               android:textSize="30sp"
+               android:textStyle="bold"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/popular_food_parent" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="32dp"
+               android:layout_marginTop="16dp"
+               android:text="View all"
+               android:textColor="@color/black"
+               app:layout_constraintTop_toTopOf="@id/dishes_title"
+               app:layout_constraintEnd_toEndOf="parent" />
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:id="@+id/dishes_parent"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="32dp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/dishes_title">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/dishes_list"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginTop="10dp"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   tools:listitem="@layout/list_dishes_items" />
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               app:layout_constraintTop_toBottomOf="@+id/dishes_parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"/>
+       </androidx.constraintlayout.widget.ConstraintLayout>
+   </androidx.core.widget.NestedScrollView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
