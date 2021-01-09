@@ -1,4 +1,4 @@
-package com.tana.foodapp.Fragments;
+ package com.tana.foodapp.Fragments;
 
 import android.os.Bundle;
 
@@ -18,22 +18,24 @@ import android.view.ViewGroup;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tana.foodapp.DatabaseHelper;
+import com.tana.foodapp.DishesAdapter;
 import com.tana.foodapp.FavoriteFoodAdapter;
-import com.tana.foodapp.Model.Favorite;
+import com.tana.foodapp.Model.Dishes;
+import com.tana.foodapp.Model.FavFood;
+import com.tana.foodapp.Model.PopFood;
+import com.tana.foodapp.PopularFoodAdapter;
 import com.tana.foodapp.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
     Toolbar toolbar;
     DrawerLayout mDrawer;
     NavigationView mNavView;
-    RecyclerView mFavFoodList;
-    FavoriteFoodAdapter mFavFoodAdapter;
-    LinearLayoutManager mLayoutManager;
-    List<Favorite> mFavFoods;
-    List<String> mKeys;
+    RecyclerView favFoodList, popFoodList, dishesList;
+//    FavoriteFoodAdapter mFavFoodAdapter;
+//    PopularFoodAdapter mPopFoodAdapter;
+//    LinearLayoutManager mLayoutManager;
 
     DatabaseHelper mHelper;
 
@@ -73,7 +75,9 @@ public class HomeFragment extends Fragment {
         toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
-        mFavFoodList = view.findViewById(R.id.top_list);
+        favFoodList = (RecyclerView) view.findViewById(R.id.top_list);
+        popFoodList = (RecyclerView) view.findViewById(R.id.popular_food_list);
+        dishesList = (RecyclerView) view.findViewById(R.id.dishes_list);
         mHelper = new DatabaseHelper();
 
         mDrawer = view.findViewById(R.id.drawer);
@@ -83,19 +87,76 @@ public class HomeFragment extends Fragment {
         toggle.syncState();
 
         favoriteFoodData();
+        popularFoodData();
+        dishesData();
 
     }
 
-    private void favoriteFoodData() {
-        mHelper.readFavoriteFood(new DatabaseHelper.DataStatus() {
+    private void dishesData() {
+        mHelper.readAllDishes(new DatabaseHelper.DishesDataStatus() {
             @Override
-            public void dataIsLoaded(List<Favorite> foods, List<String> keys) {
-                mFavFoodAdapter = new FavoriteFoodAdapter(getContext(), foods, keys);
-                mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+            public void dataIsLoaded(List<Dishes> dishes, List<String> keys) {
+                DishesAdapter adapter = new DishesAdapter(getContext(), dishes, keys);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-                mFavFoodList.setLayoutManager(mLayoutManager);
-                mFavFoodList.setAdapter(mFavFoodAdapter);
+                dishesList.setLayoutManager(layoutManager);
+                dishesList.setAdapter(adapter);
+            }
 
+            @Override
+            public void dataIsInserted() {
+
+            }
+
+            @Override
+            public void dataIsUpdated() {
+
+            }
+
+            @Override
+            public void dataIsDeleted() {
+
+            }
+        });
+    }
+
+    private void popularFoodData() {
+        mHelper.readPopularFood(new DatabaseHelper.PopFoodDataStatus() {
+            @Override
+            public void dataIsLoaded(List<PopFood> popFoods, List<String> keys) {
+                PopularFoodAdapter adapter = new PopularFoodAdapter(getContext(), popFoods, keys);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
+                popFoodList.setLayoutManager(layoutManager);
+                popFoodList.setAdapter(adapter);
+            }
+
+            @Override
+            public void dataIsInserted() {
+
+            }
+
+            @Override
+            public void dataIsUpdated() {
+
+            }
+
+            @Override
+            public void dataIsDeleted() {
+
+            }
+        });
+    }
+
+    private void favoriteFoodData() {
+        mHelper.readFavoriteFood(new DatabaseHelper.FavFoodDataStatus() {
+            @Override
+            public void dataIsLoaded(List<FavFood> favFoods, List<String> keys) {
+                FavoriteFoodAdapter adapter = new FavoriteFoodAdapter(getContext(), favFoods, keys);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
+                favFoodList.setLayoutManager(layoutManager);
+                favFoodList.setAdapter(adapter);
             }
 
             @Override

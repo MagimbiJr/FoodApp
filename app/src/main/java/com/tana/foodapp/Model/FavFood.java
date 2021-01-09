@@ -1,12 +1,12 @@
 package com.tana.foodapp.Model;
 
-public class Favorite {
+public class FavFood {
     private String name, amount, image_url;
 
-    public Favorite() {
+    public FavFood() {
     }
 
-    public Favorite(String name, String amount, String image_url) {
+    public FavFood(String name, String amount, String image_url) {
         this.name = name;
         this.amount = amount;
         this.image_url = image_url;

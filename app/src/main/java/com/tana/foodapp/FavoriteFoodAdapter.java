@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.tana.foodapp.Model.Favorite;
+import com.tana.foodapp.Model.FavFood;
 
 import java.util.List;
 
 public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodAdapter.FavoriteFoodHolder> {
     private final Context mContext;
-    private final List<Favorite> mFavoriteFood;
+    private final List<FavFood> mFavoriteFavFood;
     private final List<String> mKeys;
 
-    public FavoriteFoodAdapter(Context mContext, List<Favorite> mFavoriteFood, List<String> mKeys) {
+    public FavoriteFoodAdapter(Context mContext, List<FavFood> mFavoriteFavFood, List<String> mKeys) {
         this.mContext = mContext;
-        this.mFavoriteFood = mFavoriteFood;
+        this.mFavoriteFavFood = mFavoriteFavFood;
         this.mKeys = mKeys;
     }
 
@@ -35,12 +35,12 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodAdapte
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteFoodHolder holder, int position) {
-        holder.bind(mFavoriteFood.get(position), mKeys.get(position));
+        holder.bind(mFavoriteFavFood.get(position), mKeys.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mFavoriteFood.size();
+        return mFavoriteFavFood.size();
     }
 
     public class FavoriteFoodHolder extends RecyclerView.ViewHolder {
@@ -55,10 +55,10 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodAdapte
             mFoodImage = (ImageView) itemView.findViewById(R.id.food_image);
         }
 
-        public void bind(Favorite favoriteFood, String key) {
-            mFoodTitle.setText(favoriteFood.getName());
-            mItemAmount.setText(favoriteFood.getAmount());
-            Glide.with(mContext).load(favoriteFood.getImage_url()).into(mFoodImage);
+        public void bind(FavFood favoriteFavFood, String key) {
+            mFoodTitle.setText(favoriteFavFood.getName());
+            mItemAmount.setText(favoriteFavFood.getAmount());
+            Glide.with(mContext).load(favoriteFavFood.getImage_url()).into(mFoodImage);
             this.key = key;
 
         }
